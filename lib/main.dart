@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'bird_model.dart';
 import 'bird_list.dart';
 import 'new_bird_form.dart';
+import 'camera_screen.dart';
 
 void main() => runApp(Center(
   child: MyApp(),
@@ -54,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           IconButton(
             icon: Icon(Icons.add_a_photo),
-            onPressed: () => print("clicked on camera"),
+            onPressed: _goToCameraPage,
           )
         ],
       ),
@@ -78,6 +79,16 @@ class _MyHomePageState extends State<MyHomePage> {
       initialBirds.add(newBird);
     }
 
+  }
+
+  _goToCameraPage() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (BuildContext context) {
+          return CameraPage();
+        }
+      );
+    );
   }
 
 }
