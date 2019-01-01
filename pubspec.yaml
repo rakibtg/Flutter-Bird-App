@@ -13,7 +13,7 @@ environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"
 
 dependencies:
-  camera:
+  camera: ^0.2.6
   flutter:
     sdk: flutter
 

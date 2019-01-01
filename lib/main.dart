@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (BuildContext context) {
           return CameraPage();
         }
-      );
+      )
     );
   }
 

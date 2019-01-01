@@ -1,8 +1,5 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-
-List<CameraDescription> cameras;
 
 class CameraPage extends StatefulWidget {
   @override
@@ -13,36 +10,39 @@ class _CameraPageState extends State<CameraPage> {
 
   CameraController controller;
 
-  @override
-  void initState() {
-    super.initState()
-    controller = CameraController(cameras[0], ResolutionPreset.medium);
-    controller.initialize().then((_) {
-      if(!mounted) {
-        return;
-      }
-      setState(() {});
-    });
-  }
-
-  @override
-  void dispose() {
-    controller?.dispose();
-    super.dispose();
-  }
+  String imagePath;
 
   @override
   Widget build(BuildContext context) {
-    if (!controller.value.isInitialized ?? false) {
-      return Container();
-    }
     return Scaffold(
-      body: Center(
-        child: AspectRatio(
-          aspectRatio: controller.value.aspectRatio,
-          child: CameraPreview(controller),
-        ),
-      )
+      appBar: AppBar(
+        title: Text("Camera"),
+        backgroundColor: Colors.blueGrey,
+      ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              child: Padding(
+                padding: EdgeInsets.all(1.0),
+                child: _cameraPreviewWidget(),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
+
+  Widget _cameraPreviewWidget() {
+    if(controller == null || !controller.value.isInitialized) {
+      return Text('Tap a camera');
+    } else {
+      return AspectRatio(
+        aspectRatio: controller.value.aspectRatio,
+        child: CameraPreview(controller),
+      );
+    }
+  }
+
 }
