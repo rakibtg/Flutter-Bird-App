@@ -99,6 +99,7 @@ class _AddBirdFormPageState extends State<AddBirdFormPage> {
   }
 
   void handleSubmit(BuildContext context) {
+    if(photoController.text.isEmpty) photoController.text = 'https://source.unsplash.com/800x600/';
     if(nameController.text.isEmpty) {
       print("Bird name cant be empty");
     } else {

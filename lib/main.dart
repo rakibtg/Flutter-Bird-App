@@ -51,6 +51,10 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
             icon: Icon(Icons.add),
             onPressed: _goToNewBirdForm,
+          ),
+          IconButton(
+            icon: Icon(Icons.add_a_photo),
+            onPressed: () => print("clicked on camera"),
           )
         ],
       ),
